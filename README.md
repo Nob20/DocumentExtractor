@@ -2,6 +2,9 @@
 
 A React application for extracting shareholder information from PDF documents. Processes files locally with optional OpenAI-enhanced extraction.
 
+**🔗 Live Demo:** https://document-extractor-three.vercel.app/  
+**📦 Repository:** https://github.com/Nob20/DocumentExtractor
+
 ---
 
 ## Quick Start
@@ -21,6 +24,14 @@ The app opens at `http://localhost:3000`. Upload a PDF to see extracted sharehol
 
 ---
 
+## Live Demo
+
+**🚀 Deployed Application:** https://document-extractor-three.vercel.app/
+
+Try the application live without any local setup required!
+
+---
+
 ## Optional: Enable OpenAI Extraction
 
 ```bash
@@ -29,7 +40,7 @@ cp env.example .env.local
 
 # 2. Add your OpenAI API key
 echo "REACT_APP_OPENAI_API_KEY=sk-your-key-here" > .env.local
-echo "REACT_APP_OPENAI_MODEL=gpt-4" >> .env.local
+echo "REACT_APP_OPENAI_MODEL=gpt-5.2" >> .env.local
 
 # 3. Restart server
 npm start
@@ -73,13 +84,13 @@ The application expects PDFs with:
 **Limitations:** Requires standard formatting, struggles with unusual layouts
 
 #### 2. **OpenAI Parser** (Optional)
-- LLM-based semantic understanding
+- LLM-based semantic understanding using `gpt-5.2`
 - Handles complex/non-standard formats
 - Requires API key, slower, costs money
 
 **Process:**
-1. Truncate document to 12,000 characters
-2. Send structured prompt to OpenAI API
+1. Truncate document to 2,000,000 characters (if needed)
+2. Send structured prompt to OpenAI API (temperature: 0, max tokens: 20,000)
 3. Parse JSON response with company name and shareholders
 4. Validate data types and ranges
 
@@ -223,7 +234,8 @@ export async function saveExtraction(data) {
 - No data persistence
 
 **OpenAI mode:**
-- ⚠️ Document text sent to OpenAI (max 12,000 chars)
+- ⚠️ Document text sent to OpenAI (max 2,000,000 chars)
+- Uses gpt-5.2 model with temperature 0 and max 20,000 tokens
 - API key stored locally in `.env.local` only
 - Subject to OpenAI's privacy policy
 

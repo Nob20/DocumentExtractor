@@ -2,6 +2,12 @@
   "name": "shareholder-extractor",
   "version": "1.0.0",
   "description": "Client-side PDF shareholder information extractor",
+  "author": "Noble",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nob20/DocumentExtractor.git"
+  },
+  "homepage": "https://github.com/Nob20/DocumentExtractor",
   "private": true,
   "scripts": {
     "start": "react-scripts start",

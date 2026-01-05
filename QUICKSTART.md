@@ -2,7 +2,20 @@
 
 Get the application running in under 2 minutes.
 
-## Essential Steps
+**🔗 Live Demo:** https://document-extractor-three.vercel.app/  
+**📦 Repository:** https://github.com/Nob20/DocumentExtractor
+
+---
+
+## Option 1: Use Live Demo (Instant)
+
+Simply visit https://document-extractor-three.vercel.app/ and start uploading PDFs immediately!
+
+---
+
+## Option 2: Run Locally
+
+### Essential Steps
 
 1. **Install dependencies**
    ```bash
@@ -79,4 +92,3 @@ Tests:       10 passed, 10 total
 ---
 
 For more details, see [README.md](README.md)
-
