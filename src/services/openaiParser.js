@@ -4,7 +4,7 @@ export function isOpenAIAvailable() {
 
 export async function parseWithOpenAI(text) {
   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-  const model = process.env.REACT_APP_OPENAI_MODEL || 'gpt-4';
+  const model = 'gpt-5.2';
   
   if (!apiKey) {
     throw new Error('OpenAI API key not configured');
@@ -13,7 +13,7 @@ export async function parseWithOpenAI(text) {
   const warnings = [];
   
   try {
-    const maxLength = 12000;
+    const maxLength = 2000000;
     const truncatedText = text.length > maxLength 
       ? text.substring(0, maxLength) + '\n\n[...truncated...]'
       : text;
@@ -22,6 +22,7 @@ export async function parseWithOpenAI(text) {
       warnings.push('Document was truncated for OpenAI processing. Some shareholders may be missed.');
     }
     
+  //move to another file
     const prompt = `Extract shareholder information from the following PDF text.
 
 TASK:
@@ -72,8 +73,8 @@ JSON Response:`;
             content: prompt
           }
         ],
-        temperature: 0.1,
-        max_tokens: 2000
+        temperature: 0,
+        max_completion_tokens: 20000
       })
     });
     
@@ -96,6 +97,7 @@ JSON Response:`;
       throw new Error('Shareholders field is not an array');
     }
     
+    //modularize it
     const validShareholders = [];
     for (const sh of parsed.shareholders) {
       if (typeof sh.name === 'string' && typeof sh.shares === 'number' && sh.shares > 0) {
